@@ -2,17 +2,40 @@
   --bg:#000000;           /* full black */
   --panel:#0b0b0f;        /* near-black panel */
   --ink:#f1f1f1;          /* near white text */
-  --muted:#b9b9c0;        /* muted text */
+  --muted:#b9b9c0;        /* muted */
   --red:#b3001f;          /* dark red */
   --red-2:#7d0017;        /* deeper red (hover) */
-  --veil:rgba(179,0,31,0.10); /* subtle red veil */
-  --veil-strong:rgba(179,0,31,0.75); /* strong red veil for 'tabs' */
+  --veil:rgba(179,0,31,0.10);       /* subtle red veil */
+  --veil-strong:rgba(179,0,31,0.75);/* strong red veil */
+  --gold:#d4af37;         /* alchemical gold */
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial}
-main{max-width:880px;margin:56px auto;padding:0 20px}
 
-/* Banner with Chaos Star */
+/* keep content above the decorative background */
+main{position:relative;z-index:1;max-width:880px;margin:56px auto;padding:0 20px}
+
+/* gold alchemical background layer */
+.alchemy-field{
+  position:fixed; inset:0;
+  z-index:0; pointer-events:none; overflow:hidden;
+}
+.alchemy-glyph{
+  position:absolute;
+  color:var(--gold);
+  opacity:.1;
+  text-shadow: 0 0 6px rgba(179,0,31,.25), 0 0 12px rgba(179,0,31,.12);
+  animation: alchFloat var(--dur,40s) ease-in-out infinite;
+  will-change: transform;
+  user-select:none;
+}
+@keyframes alchFloat{
+  0%   { transform: translate(0,0) rotate(var(--rot,0deg)); }
+  50%  { transform: translate(var(--dx,8px), var(--dy,-10px)) rotate(calc(var(--rot,0deg) + 10deg)); }
+  100% { transform: translate(0,0) rotate(var(--rot,0deg)); }
+}
+
+/* Banner with Chaos Star (red glow only) */
 .banner{display:flex;justify-content:center;align-items:center;margin-bottom:32px}
 .banner img{
   width:140px;height:140px;
@@ -25,32 +48,23 @@ main{max-width:880px;margin:56px auto;padding:0 20px}
   50%     { filter: drop-shadow(0 0 22px rgba(179,0,31,.85)); }
 }
 
-/* Hero and sections: black with red-tinted veil */
+/* Panels: black with red-tinged veils */
 .hero{
-  background:
-    linear-gradient(135deg,var(--veil),transparent 60%),
-    var(--panel);
+  background: linear-gradient(135deg,var(--veil),transparent 60%), var(--panel);
   border:1px solid #1d1d26; border-radius:20px; padding:32px;
   box-shadow:0 10px 30px rgba(0,0,0,.45)
 }
 .section{
   margin:34px 0 0;
-  background:
-    linear-gradient(135deg,transparent 10%, var(--veil)),
-    var(--panel);
+  background: linear-gradient(135deg,transparent 10%, var(--veil)), var(--panel);
   border:1px solid #1b1b24;border-radius:16px;padding:22px
 }
 
-/* Optional 'tabbed' blocks: strong red-tinted background @ ~75% feel */
+/* Optional 'tabs' */
 .tabs{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
 .tab{
-  background:
-    linear-gradient(135deg, var(--veil-strong), rgba(179,0,31,0.35)),
-    #0a0a0a;
-  border:1px solid #2a0a10;
-  border-radius:12px;
-  padding:10px 14px;
-  color:var(--ink);
+  background: linear-gradient(135deg, var(--veil-strong), rgba(179,0,31,0.35)), #0a0a0a;
+  border:1px solid #2a0a10;border-radius:12px;padding:10px 14px;color:var(--ink)
 }
 
 /* Headings & text */
@@ -59,7 +73,7 @@ h1 .tiny{font-size:18px;color:var(--muted);font-weight:500}
 .section h2{margin:0 0 12px;font-size:20px;letter-spacing:.3px}
 p.lead{font-size:18px;color:#e5e5ea;margin:10px 0 0}
 
-/* Buttons: dark red theme */
+/* Buttons: dark red */
 .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
 .cta a{
   background:var(--red);
@@ -68,13 +82,10 @@ p.lead{font-size:18px;color:#e5e5ea;margin:10px 0 0}
 }
 .cta a:hover{background:var(--red-2);border-color:#4a0a12;transform:translateY(-1px)}
 .cta a.secondary{
-  background:transparent;
-  border:1px solid #3a0a10;
-  color:var(--ink)
+  background:transparent;border:1px solid #3a0a10;color:var(--ink)
 }
 .cta a.secondary:hover{
-  background:rgba(179,0,31,.10);
-  border-color:#4a0a12;
+  background:rgba(179,0,31,.10);border-color:#4a0a12
 }
 
 /* Links/badges */
@@ -92,5 +103,5 @@ hr{border:0;border-top:1px solid #1a1a1a;margin:20px 0}
 .kv{display:grid;grid-template-columns:140px 1fr;gap:10px}
 .kv .k{color:var(--muted)}
 ul.clean{margin:10px 0 0;padding-left:18px}
-.highlight{color:#ff3b56} /* highlight text in vivid red-pink for readability on black */
+.highlight{color:#ff3b56}
 code{background:#111116;border:1px solid #1f1f28;padding:2px 6px;border-radius:8px}

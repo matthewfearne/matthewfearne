@@ -55,3 +55,4 @@ layout: none
     © Matthew Alan Fearne — Text/images CC BY-NC-ND 4.0; snippets MIT.
   </div>
 </main>
+<script src="assets/js/alchemy.js"></script>
