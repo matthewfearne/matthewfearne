@@ -6,18 +6,46 @@
 *{box-sizing:border-box}
 html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial}
 main{max-width:880px;margin:56px auto;padding:0 20px}
-.hero{background:linear-gradient(135deg,rgba(225,29,72,.08),rgba(139,92,246,.08));border:1px solid #1f1f2a; border-radius:20px;padding:32px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+
+.banner{display:flex;justify-content:center;align-items:center;margin-bottom:32px}
+.banner img{
+  width:140px;height:140px;
+  animation: spin 60s linear infinite, pulse 6s ease-in-out infinite;
+  filter: drop-shadow(0 0 12px rgba(225,29,72,.4));
+}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes pulse{
+  0%,100% { filter: drop-shadow(0 0 8px rgba(225,29,72,.3)); }
+  50%     { filter: drop-shadow(0 0 18px rgba(139,92,246,.7)); }
+}
+
+.hero{
+  background:linear-gradient(135deg,rgba(225,29,72,.08),rgba(139,92,246,.08));
+  border:1px solid #1f1f2a; border-radius:20px; padding:32px;
+  box-shadow:0 10px 30px rgba(0,0,0,.35)
+}
 h1{font-size:40px;line-height:1.15;margin:0 0 12px;font-weight:800;letter-spacing:.2px}
 h1 .tiny{font-size:18px;color:var(--muted);font-weight:500}
 p.lead{font-size:18px;color:#d7d7df;margin:10px 0 0}
+
 .section{margin:34px 0 0;background:var(--panel);border:1px solid #1e1e28;border-radius:16px;padding:22px}
 .section h2{margin:0 0 12px;font-size:20px;letter-spacing:.3px}
+
 .badges{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
-.badges a{display:inline-flex;align-items:center;gap:8px;border:1px solid #262636;background:#15151d;padding:10px 14px;border-radius:12px;color:var(--ink);text-decoration:none}
+.badges a{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid #262636;background:#15151d;padding:10px 14px;border-radius:12px;
+  color:var(--ink);text-decoration:none
+}
 .badges a:hover{border-color:#313142;transform:translateY(-1px)}
+
 .cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:14px}
-.cta a{background:linear-gradient(135deg,var(--accent),var(--accent-2));padding:12px 16px;border-radius:12px;color:white;text-decoration:none;font-weight:700;letter-spacing:.3px}
+.cta a{
+  background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  padding:12px 16px;border-radius:12px;color:white;text-decoration:none;font-weight:700;letter-spacing:.3px
+}
 .cta a.secondary{background:transparent;border:1px solid #2b2b38;color:var(--ink)}
+
 .footer{margin:28px 0 10px;color:var(--muted);font-size:14px;text-align:center}
 hr{border:0;border-top:1px solid #1e1e28;margin:20px 0}
 .kv{display:grid;grid-template-columns:140px 1fr;gap:10px}

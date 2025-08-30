@@ -5,6 +5,10 @@ layout: none
 <link rel="stylesheet" href="assets/css/style.css"/>
 
 <main>
+  <div class="banner">
+    <img src="assets/img/chaos_star.png" alt="Chaos Star"/>
+  </div>
+
   <div class="hero">
     <h1>Matthew Alan Fearne <span class="tiny">— Chaos God</span></h1>
     <p class="lead">
@@ -48,6 +52,6 @@ layout: none
   </div>
 
   <div class="footer">
-    © Matthew Alan Fearne — Text/images CC BY-NC-ND 4.0; snippets MIT.  
+    © Matthew Alan Fearne — Text/images CC BY-NC-ND 4.0; snippets MIT.
   </div>
 </main>
